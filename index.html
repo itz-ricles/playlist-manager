@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Music Playlist Manager | Arrays in C++</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Music Playlist Manager</h1>
+    <p>An application of <strong>arrays</strong>. The array logic is written in C++ (<code>PlaylistManager.cpp</code>) and runs in your browser as WebAssembly.</p>
+  </header>
+
+  <main>
+    <section class="card now">
+      <div class="np-label">Now playing</div>
+      <div id="npTitle" class="np-title">Nothing yet</div>
+      <div id="npMeta" class="np-meta">Add a song or load the sample playlist.</div>
+      <div class="np-controls">
+        <button id="prevBtn" class="secondary">&#9664; Previous</button>
+        <button id="nextBtn">Next &#9654;</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Add a song</h2>
+      <div class="form">
+        <div class="fields">
+          <label>Title <input id="title" maxlength="30" placeholder="e.g. Essence"></label>
+          <label>Artist <input id="artist" maxlength="30" placeholder="e.g. Wizkid"></label>
+          <label>Length (m:ss) <input id="length" maxlength="6" placeholder="3:45" inputmode="numeric"></label>
+        </div>
+        <div class="row">
+          <button id="addBtn">Add to end</button>
+          <button id="nextUpBtn" class="secondary">Play next</button>
+        </div>
+      </div>
+      <p id="message" role="status"></p>
+    </section>
+
+    <section class="card">
+      <div class="toolbar">
+        <h2>Playlist <span id="counter"></span></h2>
+        <div class="tools">
+          <input id="search" placeholder="Find title or artist">
+          <button id="findBtn" class="secondary">Find</button>
+          <button id="shuffleBtn" class="secondary">Shuffle</button>
+          <button id="sampleBtn" class="secondary">Load sample</button>
+        </div>
+      </div>
+      <div class="scroll">
+        <table>
+          <thead><tr><th>Index</th><th>Title</th><th>Artist</th><th>Length</th><th></th></tr></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+      <p class="note">Each row is one array position: <code>titles[i]</code>, <code>artists[i]</code>, <code>durations[i]</code>. Add to end is O(1). Play next, remove and find are O(n). Next/Previous use <code>%</code> to wrap around the array. Shuffle is O(n).</p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
